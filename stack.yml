@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  web:
+    image: nginx
+    deploy:
+      replicas: 2
+    networks:
+      - mynetwork
+    ports:
+     - 8080:80
+    depends_on:
+      - db
+  db:
+    image: mysql
+    networks:
+      - mynetwork
+    environment:
+      MYSQL_ROOT_PASSWORD: "Ta3se7oh"
+networks:
+  mynetwork:
